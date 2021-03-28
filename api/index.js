@@ -38,11 +38,8 @@ app.get("/", (req, res) => {
 app.get("/:id", (req, res) => {
   try {
     let id = req.params.id;
-    model.findOne({ _id: id }, function (error, docs) {
-      if (error) {
-        res.send({ message: error.message });
-      }
-      res.send(docs);
+    model.findOne({ _id: id }, function (err, docs) {
+      res.json(docs);
     });
   } catch (error) {
     res.status(400).send({ message: error.message });
