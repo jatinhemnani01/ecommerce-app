@@ -14,6 +14,7 @@
     <a class="nav-item" href="/">Home</a>
     <a class="nav-item" href="/">Offers</a>
     <a class="nav-item" href="/">Latest</a>
+    <a class="nav-item" href="/admin">Admin Panel</a>
   </div>
   <div class="right-side">
     <div class="cart">

@@ -51,12 +51,22 @@ app.post("/add", (req, res) => {
     const products = new model({
       product_name: req.body.product_name,
       product_price: req.body.product_price,
+      product_desc: req.body.product_desc,
+      product_rating: req.body.product_rating,
+      product_image: req.body.product_image,
     });
     const newProduct = products.save();
     res.status(201).json(newProduct);
   } catch (error) {
     console.log(error);
   }
+});
+
+app.delete("/delete/:id", (req, res) => {
+  model.deleteOne({ _id: req.params.id }, (err, result) => {
+    if (err) return console.log(err);
+    return res.json({ message: "Deleted" });
+  });
 });
 
 const port = process.env.PORT || 5000;
