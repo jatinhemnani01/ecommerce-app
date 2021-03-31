@@ -1,5 +1,6 @@
 <script>
   import Card from "$lib/components/Card.svelte";
+  import Loading from "$lib/components/Loading.svelte";
   import { products } from "$lib/store/products";
   import { onMount } from "svelte";
 
@@ -14,12 +15,22 @@
 </script>
 
 <div class="card-cont">
-  <Card />
+  {#each $products as product}
+    <Card
+      image={product.product_image}
+      price={product.product_price}
+      title={product.product_name}
+      rating={product.product_rating}
+    />
+  {/each}
 </div>
 
 <style>
   .card-cont {
     padding: 1em;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
   }
 </style>

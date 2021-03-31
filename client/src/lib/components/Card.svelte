@@ -1,3 +1,10 @@
+<script>
+  export let title;
+  export let price;
+  export let rating;
+  export let image;
+</script>
+
 <svelte:head>
   <link
     rel="stylesheet"
@@ -9,21 +16,25 @@
 
 <div class="ui card">
   <div class="image">
-    <img
-      src="https://pngimg.com/uploads/running_shoes/running_shoes_PNG5827.png"
-      alt="cart"
-    />
+    <img loading="lazy" src={image} alt={title} />
   </div>
-  <div class="content">
-    <a class="header" href="/" id="title">Kristy</a>
+  <div id="content" class="content">
+    <a class="header" href="/" id="title">{title}</a>
     <div class="meta">
-      <strong>$10</strong>
+      <strong>₹ {price}</strong>
     </div>
-    <div class="description">Kristy is an art director living in New York.</div>
+    <div style="float:right;bottom:0;position:absolute; right:0; padding:1em;">
+      ⭐{rating}/10
+    </div>
   </div>
 </div>
 
 <style>
+  #content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   #title {
     text-decoration: none;
   }

@@ -2,7 +2,7 @@
   import { isAdmin } from "$lib/store/isAdmin";
   import { products } from "$lib/store/products";
   import { flip } from "svelte/animate";
-  import { fade, fly } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   let name;
   let price;
