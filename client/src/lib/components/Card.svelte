@@ -3,6 +3,16 @@
   export let price;
   export let rating;
   export let image;
+  export let id;
+  let isCliced = false;
+  let cartTitle = "Add To Cart";
+  import { cartCount } from "$lib/store/cartCount";
+
+  function addToCart() {
+    $cartCount++;
+    cartTitle = "Added";
+    isCliced = true;
+  }
 </script>
 
 <svelte:head>
@@ -13,16 +23,19 @@
     crossorigin="anonymous"
   />
 </svelte:head>
-
 <div id="card" class="ui card">
   <div class="image">
     <img id="image" loading="lazy" src={image} alt={title} />
   </div>
   <div id="content" class="content">
-    <a class="header" href="/" id="title">{title}</a>
+    <a class="header" href={"/" + id} id="title">{title}</a>
     <div class="meta">
       <strong>₹ {price}</strong>
     </div>
+    <div>
+      <button on:click|once={addToCart}>{cartTitle}</button>
+    </div>
+
     <div style="float:right;bottom:0;position:absolute; right:0; padding:1em;">
       ⭐{rating}/10
     </div>

@@ -1,5 +1,5 @@
 <script>
-  export let cart = 0;
+  import { cartCount } from "$lib/store/cartCount";
 </script>
 
 <svelte:head>
@@ -19,7 +19,7 @@
   <div class="right-side">
     <div class="cart">
       <i class="fa fa-shopping-cart" style="font-size:48px;" />
-      <div class="cart-count">{cart}</div>
+      <div class="cart-count">{$cartCount}</div>
     </div>
   </div>
 </nav>

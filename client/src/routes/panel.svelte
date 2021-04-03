@@ -4,6 +4,8 @@
   import { flip } from "svelte/animate";
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
+  import { loading } from "$lib/store/loading";
+  import Loading from "$lib/components/Loading.svelte";
   let name;
   let price;
   let desc;
@@ -41,7 +43,10 @@
 
   async function getProducts() {
     let res = await fetch("https://stormy-spire-31713.herokuapp.com/");
-    $products = await res.json();
+    if (res.ok) {
+      $products = await res.json();
+      $loading = false;
+    }
   }
 
   async function deleteProduct(id) {
@@ -71,6 +76,10 @@
   </div>
 {:else}
   <h2>You Are Not Logged In. Log In <a href="/admin">Here</a></h2>
+{/if}
+
+{#if $loading}
+  <Loading />
 {/if}
 
 {#if $isAdmin}

@@ -16,6 +16,7 @@
       goto("/panel");
     } else {
       errors = "Wrong Username Or Password";
+      $isAdmin = false;
     }
     username = "";
     password = "";
