@@ -66,19 +66,21 @@
       <input type="number" placeholder="Rating" bind:value={rating} />
       <input type="text" placeholder="Description" bind:value={desc} />
       <input type="text" placeholder="Image Link" bind:value={image} />
-      <input type="submit" />
+      <input type="submit" value="Add Product" />
     </form>
   </div>
 {:else}
   <h2>You Are Not Logged In. Log In <a href="/admin">Here</a></h2>
 {/if}
 
-{#each $products as product (product._id)}
-  <div transition:fade={{ duration: 320 }} animate:flip={{ duration: 500 }}>
-    <h3>{product.product_name}</h3>
-    <button on:click={() => deleteProduct(product._id)}>Delete</button>
-  </div>
-{/each}
+{#if $isAdmin}
+  {#each $products as product (product._id)}
+    <div in:fade={{ duration: 320 }} animate:flip={{ duration: 500 }}>
+      <h3>{product.product_name}</h3>
+      <button on:click={() => deleteProduct(product._id)}>Delete</button>
+    </div>
+  {/each}
+{/if}
 
 <style>
   .add-product {

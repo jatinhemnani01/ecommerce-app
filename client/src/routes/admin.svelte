@@ -5,6 +5,7 @@
 <script>
   import { goto } from "$app/navigation";
   import { isAdmin } from "$lib/store/isAdmin.js";
+  import { onMount } from "svelte";
   let username;
   let password;
   let errors = "";
@@ -19,6 +20,15 @@
     username = "";
     password = "";
   }
+
+  function redirect() {
+    if ($isAdmin === true) {
+      goto("/panel");
+    }
+  }
+  onMount(() => {
+    redirect();
+  });
 </script>
 
 {#if $isAdmin}

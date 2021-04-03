@@ -32,5 +32,6 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-items: stretch;
+    justify-content: center;
   }
 </style>

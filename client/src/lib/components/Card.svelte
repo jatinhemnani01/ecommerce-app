@@ -14,9 +14,9 @@
   />
 </svelte:head>
 
-<div class="ui card">
+<div id="card" class="ui card">
   <div class="image">
-    <img loading="lazy" src={image} alt={title} />
+    <img id="image" loading="lazy" src={image} alt={title} />
   </div>
   <div id="content" class="content">
     <a class="header" href="/" id="title">{title}</a>
@@ -30,6 +30,14 @@
 </div>
 
 <style>
+  #card {
+    cursor: pointer;
+    margin: 0.5em;
+    transition: ease 200ms;
+  }
+  #card:hover {
+    transform: scale(1.1);
+  }
   #content {
     display: flex;
     flex-direction: column;
