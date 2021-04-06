@@ -69,5 +69,11 @@ app.delete("/delete/:id", (req, res) => {
   });
 });
 
+app.get("/search/:q", function (req, res) {
+  const q = req.params.q;
+  const search = model.find({ product_name: "black" });
+  res.send(search);
+});
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log("Server Running"));

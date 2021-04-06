@@ -4,7 +4,6 @@
   export let rating;
   export let image;
   export let id;
-  let isCliced = false;
   let cartTitle = "Add To Cart";
   import { cartCount } from "$lib/store/cartCount";
 
@@ -27,8 +26,9 @@
   <div class="image">
     <img id="image" loading="lazy" src={image} alt={title} />
   </div>
+
   <div id="content" class="content">
-    <a class="header" href={"/" + id} id="title">{title}</a>
+    <a sveltekit:prefetch class="header" href={"/" + id} id="title">{title}</a>
     <div class="meta">
       <strong>₹ {price}</strong>
     </div>

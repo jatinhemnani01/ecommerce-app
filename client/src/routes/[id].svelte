@@ -13,7 +13,11 @@
 </script>
 
 <script>
+  import Animation from "$lib/components/Animation.svelte";
+
   export let post;
 </script>
 
+<!-- <Animation> -->
 <div>{post.product_name}</div>
+<!-- </Animation> -->
