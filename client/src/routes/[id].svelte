@@ -1,5 +1,4 @@
 <script context="module">
-  export const prerender = true;
   export async function load({ page, fetch }) {
     const res = await fetch(
       `https://stormy-spire-31713.herokuapp.com/${page.params.id}`
