@@ -35,6 +35,17 @@ app.get("/", (req, res) => {
   }
 });
 
+app.get("/search/:item", (req, res) => {
+  const { item } = req.params;
+  let regex = new RegExp(item, "i");
+  model
+    .find({ product_name: regex })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((e) => console.log(e));
+});
+
 app.get("/:id", (req, res) => {
   try {
     let id = req.params.id;
@@ -67,12 +78,6 @@ app.delete("/delete/:id", (req, res) => {
     if (err) return console.log(err);
     return res.json({ message: "Deleted" });
   });
-});
-
-app.get("/search/:q", function (req, res) {
-  const q = req.params.q;
-  const search = model.find({ product_name: "black" });
-  res.send(search);
 });
 
 const port = process.env.PORT || 5000;
